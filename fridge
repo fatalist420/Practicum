@@ -10,7 +10,7 @@ goods = {
         {'amount': Decimal('1.5'), 'expiration_date': None}
     ], 
     'Яйца фабрики №7': [
-        {'amount': Decimal('1'), 'expiration_date': datetime.date(2024, 5, 9)},
+        {'amount': Decimal('1'), 'expiration_date': datetime.date(2024, 5, 8)},
         {'amount': Decimal('0'), 'expiration_date': datetime.date(2024, 5, 8)}
     ]
 }
@@ -111,10 +111,10 @@ def expire(items, in_advance_days=0):
                 
                 if d.days <= 0 :
                     list.append(expirate_list, (i, amount))
-                
+    
     return(expirate_list)
-                
-print(expire(goods, 0))   
+
+print(expire(goods))   
 
 #add(goods, 'Яйца фабрики №7', Decimal('0'), '2024-05-09')
 #add_by_note(goods, 'Яйца фабрики №101 0 2024-05-08')
