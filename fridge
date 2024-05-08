@@ -3,17 +3,15 @@ import datetime
 
 goods = {
     'Пельмени Универсальные': [
-        {'amount': Decimal('0.5'), 'expiration_date': datetime.date(2024, 5, 15)}, 
-        {'amount': Decimal('2'), 'expiration_date': datetime.date(2024, 5, 8)}
+        {'amount': Decimal('0.4'), 'expiration_date': datetime.date(2024, 5, 11)}, 
+        {'amount': Decimal('0.5'), 'expiration_date': datetime.date(2024, 5, 10)}
     ], 
     'Вода': [
         {'amount': Decimal('1.5'), 'expiration_date': None}
     ], 
     'Яйца фабрики №7': [
-        {'amount': Decimal('1'), 'expiration_date': datetime.date(2024, 5, 6)}
-    ], 
-    'Яйца фабрики №1': [
-        {'amount': Decimal('10'), 'expiration_date': datetime.date(2024, 5, 8)}
+        {'amount': Decimal('1'), 'expiration_date': datetime.date(2024, 5, 9)},
+        {'amount': Decimal('0'), 'expiration_date': datetime.date(2024, 5, 8)}
     ]
 }
 
@@ -106,7 +104,7 @@ def expire(items, in_advance_days=0):
     for i in list_keys:
         list_dict = items.get(i)
         for a in list_dict:
-            if a['expiration_date'] is not None:
+            if a['expiration_date'] is not None and a['amount'] > 0:
                 amount = a['amount']
                 expiration_date = a['expiration_date']
                 d = a['expiration_date'] - (now_date + datetime.timedelta(days=in_advance_days))
@@ -118,10 +116,8 @@ def expire(items, in_advance_days=0):
                 
 print(expire(goods, 0))   
 
-
-
-add(goods, 'Яйца фабрики №7', Decimal('0'), '2024-05-09')
-add_by_note(goods, 'Яйца фабрики №101 0 2024-05-08')
+#add(goods, 'Яйца фабрики №7', Decimal('0'), '2024-05-09')
+#add_by_note(goods, 'Яйца фабрики №101 0 2024-05-08')
 #print(find(goods, 'яй'))
 #print(amount(goods, 'пель'))
 
